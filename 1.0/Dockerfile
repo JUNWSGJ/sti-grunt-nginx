@@ -50,6 +50,9 @@ RUN mkdir -p /opt/s2i/destination && \
     npm cache clean
 
 # Create nginx group and user, set file ownership to that user.
+RUN chown -R 1001:0 /opt/app-root && chmod -R og+rwx /opt/app-root
+RUN chown -R 1001:0 /var/log/nginx/ && chmod -R og+rwx /var/log/nginx/
+RUN chown -R 1001:0 /var/cache/nginx/ && chmod -R og+rwx /var/cache/nginx/
 RUN chmod -R 777 /opt/s2i/destination
 
 # Open port
