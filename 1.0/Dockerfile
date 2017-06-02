@@ -56,6 +56,8 @@ RUN chown -R 1001:0 /var/cache/nginx/ && chmod -R og+rwx /var/cache/nginx/
 RUN chmod -R 777 /opt/s2i/destination
 RUN sed  -i 's/listen\s\+80/listen  8080/g' /etc/nginx/nginx.conf
 RUN sed  -i 's/listen\s\+443/listen  8443/g' /etc/nginx/nginx.conf
+RUN sed  -i 's/listen\s\+80/listen  8080/g' /etc/nginx/conf.d/*
+RUN sed  -i 's/listen\s\+443/listen  8443/g' /etc/nginx/conf.d/*
 
 # Open port
 EXPOSE 8080 8443
