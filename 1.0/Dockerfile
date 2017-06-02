@@ -21,6 +21,13 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     yum clean all -y && \
     rm -f ./nginx_signing.key
 
+# Install sass and compass gems
+RUN gem install sass --no-ri --no-rdoc && \
+    gem install compass --no-ri --no-rdoc
+
+# Install Bower & Grunt
+RUN npm install -g bower grunt-cli
+
 # forward request and error logs to docker log collector
 # Using /proc/self/fd/1 and /proc/self/fd/2 instead of /dev/stdout and /dev/stderr
 # to bypass https://github.com/docker/docker/issues/6880
