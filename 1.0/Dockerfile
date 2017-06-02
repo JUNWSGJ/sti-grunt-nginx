@@ -21,6 +21,9 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     yum clean all -y && \
     rm -f ./nginx_signing.key
 
+#Start using software collections:
+RUN scl enable ruby200 bash
+
 # Install sass and compass gems
 RUN gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
