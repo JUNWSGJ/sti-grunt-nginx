@@ -25,6 +25,8 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   source scl_source enable ruby200
   
   ruby -v
+  
+  compass --version
  
   npm cache clean
   npm install
