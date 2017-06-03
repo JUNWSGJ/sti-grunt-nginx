@@ -17,7 +17,15 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   pushd $LOCAL_SOURCE_DIR &> /dev/null
 
   echo "Found Gruntfile.js... attempting to build with 'grunt build'"
-
+  
+  echo "check ruby, compass"
+  
+  scl enable ruby200 bash
+  
+  source scl_source enable ruby200
+  
+  ruby -v
+ 
   npm cache clean
   npm install
   bower --allow-root install
