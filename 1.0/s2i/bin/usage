@@ -18,3 +18,11 @@ swarm output in target will be executed.
 The default Maven build arguments can be overridden by setting MAVEN_ARGS via the "--env" argument to S2I
 The default Maven build arguments can be appended by setting MAVEN_ARGS_APPEND.
 EOF
+ 
+ruby -v
+
+echo "check ruby, compass"
+  
+scl enable ruby200 bash
+
+export PATH=$PATH:/opt/rh/ruby200/root/usr/local/bin/ 
