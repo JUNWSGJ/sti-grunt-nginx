@@ -25,7 +25,7 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
 RUN scl enable ruby200 bash
 
 # Install sass and compass gems
-RUN  scl enable ruby200 bash && gem install sass --no-ri --no-rdoc && \
+RUN scl enable ruby200 bash && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
 # Install Bower & Grunt
