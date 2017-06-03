@@ -28,7 +28,7 @@ RUN source scl_source enable ruby200 && ruby -v
 RUN source scl_source enable ruby200 && gem -v
 
 # Install sass and compass gems
-RUN source scl_source enable ruby200 &&  && gem install sass --no-ri --no-rdoc && \
+RUN source scl_source enable ruby200 && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
 # Install Bower & Grunt
