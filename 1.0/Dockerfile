@@ -24,11 +24,11 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
 #Start using software collections:
 RUN scl enable ruby200 bash
 
-RUN ruby -v
-RUN gem -v
+RUN scl_source enable ruby200 && ruby -v
+RUN scl_source enable ruby200 && gem -v
 
 # Install sass and compass gems
-RUN scl enable ruby200 bash && gem install sass --no-ri --no-rdoc && \
+RUN scl_source enable ruby200 &&  && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
 # Install Bower & Grunt
