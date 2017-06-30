@@ -49,9 +49,9 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
 
   popd &> /dev/null
 elif [ -f "$LOCAL_SOURCE_DIR/index.tml" ]; then
+  pushd $LOCAL_SOURCE_DIR &> /dev/null
   echo "no need to build. Copying all file to nginx documents directory..."
-  cp -Rf /opt/s2i/destination/src/ /usr/share/nginx/html/
-  rm -rf /usr/share/nginx/html/nginx/nginx.conf
+  cp -a dist/. /usr/share/nginx/html/
   cp nginx/nginx.conf /etc/nginx/nginx.conf
 else
   echo "Oops - only grunt builds are supported."
