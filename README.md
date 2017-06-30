@@ -20,7 +20,7 @@ environment](http://www.openshift.org/) with the `oc` command in your
 path.
 
 ```
-$ oc new-build https://github.com/clerixmaxime/sti-grunt-nginx.git --context-dir=/1.0 --strategy=docker --to=sti-grunt-nginx -n openshift
+$ oc new-build https://github.com/wulliam/sti-grunt-nginx.git --context-dir=/1.0 --strategy=docker --to=sti-grunt-nginx -n openshift
 ```
 
 Wait for that buld to complete. Monitor it
