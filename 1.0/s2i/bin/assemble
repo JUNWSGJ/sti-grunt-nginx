@@ -37,8 +37,8 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   --cache=$HOME/.npm/.cache/cnpm \
   --disturl=https://npm.taobao.org/dist \
   --userconfig=$HOME/.cnpmrc"
-  cnpm install
   cnpm install -g grunt-cli
+  cnpm install
   bower --allow-root install
   grunt build --force -d
 
