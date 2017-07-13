@@ -31,7 +31,7 @@ RUN source scl_source enable ruby200 && gem -v
 RUN source scl_source enable ruby200 && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
-alias cnpm="npm --registry=https://registry.npm.taobao.org \
+RUN alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npm.taobao.org/dist \
 --userconfig=$HOME/.cnpmrc"
