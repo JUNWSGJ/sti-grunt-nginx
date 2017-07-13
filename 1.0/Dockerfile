@@ -31,8 +31,14 @@ RUN source scl_source enable ruby200 && gem -v
 RUN source scl_source enable ruby200 && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+
+
 # Install Bower & Grunt
-RUN npm install -g bower grunt-cli
+RUN cnpm install -g bower grunt-cli
 
 # forward request and error logs to docker log collector
 # Using /proc/self/fd/1 and /proc/self/fd/2 instead of /dev/stdout and /dev/stderr
@@ -57,10 +63,10 @@ COPY ./contrib/ /opt/app-root
 
 # Installation
 RUN mkdir -p /opt/s2i/destination && \
-    npm install npm -g && \
-    npm install -g bower && \
-    npm install -g grunt-cli && \
-    npm cache clean --force
+    cnpm install npm -g && \
+    cnpm install -g bower && \
+    cnpm install -g grunt-cli && \
+    cnpm cache clean --force
 
 # Create nginx group and user, set file ownership to that user.
 RUN chown -R 1001:0 /opt/app-root && chmod -R og+rwx /opt/app-root
