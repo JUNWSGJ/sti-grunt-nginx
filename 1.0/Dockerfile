@@ -22,17 +22,22 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
     rm -f ./nginx_signing.key
 
 #Start using software collections:
-RUN scl enable ruby200 bash
+#RUN scl enable ruby200 bash
 
-RUN source scl_source enable ruby200 && ruby -v
-RUN source scl_source enable ruby200 && gem -v
+#RUN source scl_source enable ruby200 && ruby -v
+#RUN source scl_source enable ruby200 && gem -v
 
 # Install sass and compass gems
 
-RUN source scl_source enable ruby200 &&\
-    gem sources -a http://ruby.taobao.org/ &&\
-    gem update --system && gem install sass --no-ri --no-rdoc && \
-    gem install compass --no-ri --no-rdoc
+# RUN source scl_source enable ruby200 &&\
+#    gem sources -a http://ruby.taobao.org/ &&\
+#    gem update --system && gem install sass --no-ri --no-rdoc && \
+#    gem install compass --no-ri --no-rdoc
+
+RUN gem -v &&\
+    gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/ &&\
+    gem install --no-rdoc --no-ri compass &&\
+    gem install --no-ri --no-rdoc sass
 
 
 
