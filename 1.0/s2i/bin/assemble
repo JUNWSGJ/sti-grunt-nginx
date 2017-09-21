@@ -65,6 +65,29 @@ elif [ -f "$LOCAL_SOURCE_DIR/index.tml" ]; then
   cp -a $LOCAL_SOURCE_DIR/. /usr/share/nginx/html/
   rm -rf /usr/share/nginx/html/nginx/nginx.conf
   cp nginx/nginx.conf /etc/nginx/nginx.conf
+elif [ -f "$LOCAL_SOURCE_DIR/package.json" ]; then
+  pushd $LOCAL_SOURCE_DIR &> /dev/null
+  echo "Found package.json... attempting to build with 'npm run build'"
+  ruby -v
+  echo "check ruby, compass"
+  scl enable ruby200 bash
+  export PATH=$PATH:/opt/rh/ruby200/root/usr/local/bin/ 
+  source scl_source enable ruby200
+  ruby -v
+  compass --version
+  npm cache clean
+  cnpm install
+  cnpm run build
+  ERR=$?
+  if [ $ERR -ne 0 ]; then
+    echo "Aborting due to error code $ERR from npm run build"
+    exit $ERR
+  fi
+  echo "Copying build artifacts to nginx documents directory..."
+  cp -a dist/. /usr/share/nginx/html/
+  cp nginx/nginx.conf /etc/nginx/nginx.conf
+  popd &> /dev/null
+
 else
   echo "Oops - only grunt builds are supported."
   exit 1
