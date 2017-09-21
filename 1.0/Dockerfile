@@ -29,7 +29,9 @@ RUN source scl_source enable ruby200 && gem -v
 
 # Install sass and compass gems
 
-RUN source scl_source enable ruby200 && gem update --system && gem install sass --no-ri --no-rdoc && \
+RUN source scl_source enable ruby200 &&\
+    gem sources -a http://ruby.taobao.org/ &&\
+    gem update --system && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
 
