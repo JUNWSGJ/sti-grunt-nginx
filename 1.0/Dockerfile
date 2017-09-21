@@ -28,10 +28,10 @@ RUN source scl_source enable ruby200 && ruby -v
 RUN source scl_source enable ruby200 && gem -v
 
 # Install sass and compass gems
-RUN source scl_source enable ruby200 && gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/ && gem sources -l && gem install sass --no-ri --no-rdoc && \
+
+RUN gem update --system && gem install sass --no-ri --no-rdoc && \
     gem install compass --no-ri --no-rdoc
 
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 
 
@@ -58,6 +58,7 @@ COPY ./contrib/ /opt/app-root
 
 # Installation
 RUN mkdir -p /opt/s2i/destination && \
+    npm install -g cnpm --registry=https://registry.npm.taobao.org && \
     cnpm install npm -g && \
     cnpm install -g bower && \
     cnpm install -g grunt-cli && \
