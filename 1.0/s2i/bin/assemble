@@ -32,7 +32,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   
   compass --version
  
-  npm cache clean
+  npm cache verify
 
   cnpm install
   bower --allow-root install
