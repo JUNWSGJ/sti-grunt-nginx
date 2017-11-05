@@ -49,6 +49,11 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   cp nginx/nginx.conf /etc/nginx/nginx.conf
 
   popd &> /dev/null
+  
+elif [ -f "$LOCAL_SOURCE_DIR/ionic.config.json"]; then
+  cnpm install
+  ionic serve
+  cp -a www/. /usr/share/nginx/html/
 elif [ -f "$LOCAL_SOURCE_DIR/dist/index.tml" ]; then
   pushd $LOCAL_SOURCE_DIR &> /dev/null
   echo "no need to build. Copying all file to nginx documents directory..."
