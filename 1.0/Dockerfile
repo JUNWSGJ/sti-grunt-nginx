@@ -34,9 +34,7 @@ RUN curl -sO http://nginx.org/keys/nginx_signing.key && \
 #    gem update --system && gem install sass --no-ri --no-rdoc && \
 #    gem install compass --no-ri --no-rdoc
 
-RUN scl enable ruby bash &&\
-    source scl_source enable ruby &&\
-    ruby -v &&\
+RUN ruby -v &&\
     gem -v &&\
     gem sources --add http://gems.ruby-china.org/ --remove https://rubygems.org/ &&\
     gem install --no-rdoc --no-ri compass &&\
