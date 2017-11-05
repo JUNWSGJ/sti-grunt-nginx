@@ -38,7 +38,7 @@ RUN scl enable ruby200 bash &&\
     source scl_source enable ruby200 &&\
     ruby -v &&\
     gem -v &&\
-    gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/ &&\
+    gem sources --add http://gems.ruby-china.org/ --remove https://rubygems.org/ &&\
     gem install --no-rdoc --no-ri compass &&\
     gem install --no-ri --no-rdoc sass
 
