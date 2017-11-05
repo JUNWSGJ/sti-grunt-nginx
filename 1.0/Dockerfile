@@ -70,6 +70,7 @@ RUN mkdir -p /opt/s2i/destination && \
     cnpm install npm -g && \
     cnpm install -g bower && \
     cnpm install -g grunt-cli && \
+    cnpm install -g ionic cordova && \
     cnpm cache clean --force
 
 # Create nginx group and user, set file ownership to that user.
