@@ -23,7 +23,6 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   compass --version
  
   npm cache verify
-
   cnpm install
   bower --allow-root install
   grunt build --force -d
@@ -43,7 +42,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
 elif [ -f "$LOCAL_SOURCE_DIR/ionic.config.json"]; then
   echo "Found ionic.config.json... attempting to build with 'ionic serve'"
   cnpm install
-  ionic serve
+  ionic build ios
   cp -a www/. /usr/share/nginx/html/
 elif [ -f "$LOCAL_SOURCE_DIR/dist/index.tml" ]; then
   pushd $LOCAL_SOURCE_DIR &> /dev/null
