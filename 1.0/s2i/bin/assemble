@@ -19,16 +19,6 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   echo "Found Gruntfile.js... attempting to build with 'grunt build'"
  
   ruby -v
-
-  echo "check ruby, compass"
-  
-  scl enable ruby200 bash
-
-  export PATH=$PATH:/opt/rh/ruby200/root/usr/local/bin/ 
- 
-  source scl_source enable ruby200
-  
-  ruby -v
   
   compass --version
  
@@ -51,6 +41,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   popd &> /dev/null
   
 elif [ -f "$LOCAL_SOURCE_DIR/ionic.config.json"]; then
+  echo "Found ionic.config.json... attempting to build with 'ionic serve'"
   cnpm install
   ionic serve
   cp -a www/. /usr/share/nginx/html/
