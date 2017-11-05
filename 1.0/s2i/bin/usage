@@ -23,6 +23,3 @@ ruby -v
 
 echo "check ruby, compass"
   
-scl enable ruby200 bash
-
-export PATH=$PATH:/opt/rh/ruby200/root/usr/local/bin/ 
