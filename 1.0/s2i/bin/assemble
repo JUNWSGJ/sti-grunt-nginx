@@ -42,7 +42,8 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
 elif [ -f "$LOCAL_SOURCE_DIR/ionic.config.json"]; then
   echo "Found ionic.config.json... attempting to build with 'ionic serve'"
   cnpm install
-  ionic build ios
+  cnpm build
+  cnpm min
   cp -a www/. /usr/share/nginx/html/
 elif [ -f "$LOCAL_SOURCE_DIR/dist/index.tml" ]; then
   pushd $LOCAL_SOURCE_DIR &> /dev/null
