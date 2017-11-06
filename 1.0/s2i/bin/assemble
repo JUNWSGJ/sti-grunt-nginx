@@ -40,6 +40,7 @@ if [ -f "$LOCAL_SOURCE_DIR/Gruntfile.js" ]; then
   popd &> /dev/null
   
 elif [ -f "$LOCAL_SOURCE_DIR/ionic.config.json"]; then
+  pushd $LOCAL_SOURCE_DIR &> /dev/null
   echo "Found ionic.config.json... attempting to build with 'ionic serve'"
   cnpm install
   cnpm build
@@ -64,14 +65,10 @@ elif [ -f "$LOCAL_SOURCE_DIR/index.tml" ]; then
 elif [ -f "$LOCAL_SOURCE_DIR/package.json" ]; then
   pushd $LOCAL_SOURCE_DIR &> /dev/null
   echo "Found package.json... attempting to build with 'npm run build'"
-  ruby -v
   echo "check ruby, compass"
-  scl enable ruby200 bash
-  export PATH=$PATH:/opt/rh/ruby200/root/usr/local/bin/ 
-  source scl_source enable ruby200
   ruby -v
   compass --version
-  npm cache clean
+  cnpm cache clean
   cnpm install
   cnpm run build
   ERR=$?
